@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.5.1.js"></script>
+    <script>
+        $(function () {
+            $("button").click(function (event) {
+                event.preventDefault();
+                // $.post("/loginServlet", {
+                //         username: $("input[name='username']").val(),
+                //         password: $("input[name='password']").val()
+                //     }, function (data) {
+                //         alert(data);
+                //     }
+                // );
+
+                $.ajax({
+                    url:"loginServlet",
+                    type:"post",
+                    // contentType:"application/json",
+                    // dataType:"json",//服务器返回类型
+                    data:{username: $("input[name='username']").val(),
+                                password: $("input[name='password']").val()},
+                    success:function (data) {
+                        alert(data);
+                    }
+                });
+
+            })
+        })
+
+    </script>
+</head>
+<body>
+<form>
+    用户名<input name="username" type="text">
+    密码<input name="password" type="password">
+    <button>登录</button>
+
+
+</form>
+</body>
+</html>
